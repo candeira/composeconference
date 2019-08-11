@@ -1,6 +1,6 @@
 with import <nixpkgs> { };
 
-let jekyll_env = bundlerEnv rec {
+let jekyll_env = bundlerEnv {
     name = "jekyll_env";
     ruby = ruby_2_5;
     gemfile = ./Gemfile;
@@ -8,7 +8,7 @@ let jekyll_env = bundlerEnv rec {
     gemset = ./gemset.nix;
   };
 in 
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     name= "jekyll_env";
     buildInputs = [ jekyll_env ];
 
